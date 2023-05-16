@@ -15,7 +15,6 @@ import { createDrawerNavigator,createAppContainer, createStackNavigator,Navigati
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import SafeAreaView from 'react-native-safe-area-view';
 
-
 /**********************************************************************
 *
 *                               Screens
