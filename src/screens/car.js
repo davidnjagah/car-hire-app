@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing, } from 'react-native';
 import { Body, Header, ListItem as Title, Left, Container, Content, Right, Icon } from "native-base";
-import LinearGradient from "react-native-linear-gradient";
-import Swiper from 'react-native-swiper'
+import {LinearGradient} from 'expo-linear-gradient';
+import Swiper from 'react-native-swiper';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import LottieView from "lottie-react-native";
 
 
 
-import Footer from '../components/footer'
+import Footer2 from "../components/footer";
 const images = [{
 	// Simplest usage.
 	//     url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
@@ -40,8 +40,9 @@ const images = [{
 		source: require('../../assets/slider_3.jpg')
 	}
 
-}]
-export default class car extends Component {
+}];
+
+export default class Car extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -101,6 +102,7 @@ export default class car extends Component {
 			outputRange: [260, 0]
 		  })
 		return (
+			<View>
 			<Container>
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
 					<Header style={{ backgroundColor: "transparent", display: 'flex' }}>
@@ -258,8 +260,9 @@ export default class car extends Component {
 						/>
 					</Modal>
 				</Content>
-				<Footer />
+				<Footer2 />
 			</Container>
+			</View>
 		);
 	}
 }

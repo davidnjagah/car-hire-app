@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Animated,Easing, Dimensions, Text, TouchableOpacity, View, Image, ScrollView, StyleSheet } from "react-native";
-import { Body, Header, ListItem as Title, Left, Container, Content, Right } from "native-base";
-import LinearGradient from "react-native-linear-gradient";
+import { Body, Header, Left, Container, Content, Right } from "native-base";
+import {LinearGradient} from 'expo-linear-gradient';
 
-import CardBig from '../components/cardBig'
-import CardSmall from '../components/cardSmall'
-import Footer from '../components/footer'
+import CardBig from '../components/cardBig';
+import CardSmall from '../components/cardSmall';
+import Footer2 from '../components/footer';
 
 const { height, width } = Dimensions.get("window");
+
 export default class Home extends React.Component {
    constructor(props) {
       super(props);
@@ -210,7 +211,7 @@ export default class Home extends React.Component {
                   </View>
                </ScrollView>
             </Animated.View>
-            <Footer />
+            <Footer2/>
          </Container>
       )
    }

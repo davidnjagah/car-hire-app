@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated, Easing,StyleSheet } from 'react-native';
 import LottieView from "lottie-react-native";
-export default class cardBig extends Component {
+
+export default class CardBig extends Component {
     constructor(props) {
         super(props);
         this.state = {

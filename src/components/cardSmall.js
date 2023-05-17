@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated, Easing, } from 'react-native';
-export default class cardSmall extends Component {
+
+export default class CardSmall extends Component {
     constructor(props) {
         super(props);
         this.state = {

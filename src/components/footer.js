@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Text,TouchableOpacity,Image } from 'react-native';import {  Footer } from "native-base";
-export default class header extends Component {
+import { Text,TouchableOpacity,Image } from 'react-native';
+import {  Footer } from "native-base";
+
+export default class Footer2 extends Component {
   constructor(props) {
     super(props);
     this.state = {

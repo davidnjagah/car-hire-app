@@ -2,11 +2,11 @@ import React, { Component,Fragment } from 'react';
 
 import { StyleSheet, View, Text, Platform,Image ,StatusBar,SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faAngleRight,faAngleLeft ,faCheck,faTimes} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faAngleRight,faAngleLeft ,faCheck,faTimes} from '@fortawesome/free-solid-svg-icons';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import LinearGradient from 'react-native-linear-gradient';
-
+//import LinearGradient from 'react-native-linear-gradient';
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default class intro extends Component {
 

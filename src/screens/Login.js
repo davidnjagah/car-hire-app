@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { View, Text ,StyleSheet,Platform,Image,TextInput,TouchableOpacity} from 'react-native';
 //import LinearGradient from 'react-native-linear-gradient';
 import {LinearGradient} from 'expo-linear-gradient';
-export default class login extends Component {
+
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {

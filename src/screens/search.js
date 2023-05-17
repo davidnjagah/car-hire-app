@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image, Animated, Easing, StyleSheet, Dimensions } from 'react-native';
 import { Body, Header, ListItem as Title, Left, Container, Content, Right } from "native-base";
-import LinearGradient from "react-native-linear-gradient";
+//import LinearGradient from "react-native-linear-gradient";
+import {LinearGradient} from 'expo-linear-gradient';
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
 import Slider from "react-native-slider";
 
-import ToggleButton from '../components/ToggleButton'
-import ToggleButtonColor from '../components/ToggleButtonColor'
-import SearchCard from '../components/searchCard'
-import Footer from '../components/footer'
+import ToggleButton from '../components/ToggleButton';
+import ToggleButtonColor from '../components/ToggleButtonColor';
+import SearchCard from '../components/searchCard';
+import Footer from '../components/footer';
 
 const { height, width } = Dimensions.get("window");
 
