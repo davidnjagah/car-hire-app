@@ -1,13 +1,24 @@
 import * as React from 'react';
 import { Animated,Easing, Dimensions, Text, TouchableOpacity, View, Image, ScrollView, StyleSheet } from "react-native";
-import { Body, Header, Left, Container, Content, Right } from "native-base";
+import { Container, HStack, Button, IconButton, Icon, Center, Box, StatusBar } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
+import { MaterialIcons } from "@expo/vector-icons";
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 import CardBig from '../components/cardBig';
 import CardSmall from '../components/cardSmall';
 import Footer2 from '../components/footer';
 
+
+
 const { height, width } = Dimensions.get("window");
+
+let customFonts = {
+   'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+   'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+ };
+
 
 export default class Home extends React.Component {
    constructor(props) {
@@ -15,9 +26,18 @@ export default class Home extends React.Component {
       this.state = {
          bounceValue: new Animated.Value(5000),
          fadeAnim: new Animated.Value(0),
+         fontsLoaded: false,
       };
       this.animatedValue = new Animated.Value(0);
    }
+
+   
+   async _loadFontsAsync() {
+      await Font.loadAsync(customFonts);
+      this.setState({ fontsLoaded: true });
+    }
+
+  
    _openModal() {
       Animated.spring(
          this.state.bounceValue,
@@ -26,6 +46,7 @@ export default class Home extends React.Component {
             velocity: 3,
             tension: 2,
             friction: 8,
+            useNativeDriver: true,
          }
       ).start();
    }
@@ -37,17 +58,20 @@ export default class Home extends React.Component {
             velocity: 3,
             tension: 2,
             friction: 8,
+            useNativeDriver: true,
          }
       ).start();
    }
    componentDidMount() {
-      this.animatedValue.setValue(0)
+      this.animatedValue.setValue(0);
+      this._loadFontsAsync();
       // apply fade animation to small card
       Animated.timing(
          this.state.fadeAnim,
          {
             toValue: 1,
             duration: 1000,
+            useNativeDriver: true,
          }
       ).start();
       
@@ -57,6 +81,7 @@ export default class Home extends React.Component {
         {
           toValue: 1,
           duration: 2000,
+          useNativeDriver: true,
           easing:Easing.inOut(Easing.quad)
         }
     ).start()
@@ -67,23 +92,25 @@ export default class Home extends React.Component {
          inputRange: [0, 1],
          outputRange: [260, 0]
        })
+
+       if (!this.state.fontsLoaded) {
+         return <AppLoading />;
+       }
       return (
          <Container>
             <LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-               <Header style={{ backgroundColor: "transparent" }} hasTabs>
-                  <Left>
-                     <Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Homepage</Text>
-                  </Left>
-                  <Body />
-                  <Right>
-                     <TouchableOpacity style={{ marginRight: 10 }} onPress={() => { this.props.navigation.navigate('Search') }}>
-                        <Image source={require('../../assets/search.png')} height={20} width={20} />
-                     </TouchableOpacity>
-                     <TouchableOpacity>
-                        <Image source={require('../../assets/notification.png')} height={20} width={20} />
-                     </TouchableOpacity>
-                  </Right>
-               </Header>
+               <Box safeAreaTop bg="violet.600" />
+               <HStack bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center" w="100%" maxW="350">
+               <HStack alignItems="center">
+                  <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} />
+                  <Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Homepage</Text>
+               </HStack>
+               <HStack>
+                  <IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
+                  <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
+                  <IconButton icon={<Icon as={MaterialIcons} name="more-vert" size="sm" color="white" />} />
+               </HStack>
+               </HStack>
                <ScrollView horizontal={true} style={{ display: 'flex' }}>
                   <TouchableOpacity style={{ display: 'flex', flexDirection: 'row', padding: 10, marginLeft: 20, borderBottomColor: '#ffffff', borderBottomWidth: 5 }}>
                      <Text style={{ display: 'flex', fontSize: 14, fontFamily: 'Avenir-Heavy', color: '#ffffff' }}>All </Text>
@@ -103,34 +130,34 @@ export default class Home extends React.Component {
                   </TouchableOpacity>
                </ScrollView>
             </LinearGradient>
-            <Content>
+            <Box>
                <ScrollView horizontal={true} style={{ paddingTop: 10, paddingBottom: 20, }}>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View>
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
                   </Animated.View>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View >
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
                   </Animated.View>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View >
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
                   </Animated.View>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View>
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
                   </Animated.View>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View >
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
                   </Animated.View>
-                  <Animated.View style={{marginLeft}}>
+                  <Animated.View>
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
                         <CardBig />
                      </TouchableOpacity>
@@ -166,7 +193,7 @@ export default class Home extends React.Component {
 
                </ScrollView>
 
-            </Content>
+            </Box>
             <Animated.View
                style={[styles.subView,
                { transform: [{ translateY: this.state.bounceValue }] }]}

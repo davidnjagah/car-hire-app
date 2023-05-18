@@ -26,7 +26,7 @@ import DrawerContainer from './src/screens/drawer'
 import SplashScreen from './src/screens/SplashScreen';
 import Logic from './src/screens/Logic';
 import Intro from './src/screens/intro';
-import Home from './src/screens/HomeNew';
+import Home from './src/screens/home';
 import Login from "./src/screens/Login";
 import Search from './src/screens/search';
 import SearchNearBy from './src/screens/searchNearby';
@@ -140,6 +140,7 @@ render(){
     }}
   >
     <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Login" component={Login} />
    
     
   </Stack.Navigator>

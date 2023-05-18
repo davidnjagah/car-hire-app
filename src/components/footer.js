@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import { Text,TouchableOpacity,Image } from 'react-native';
-import {  Footer } from "native-base";
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Icon, HStack, Center, Pressable } from "native-base";
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+let customFonts = {
+    'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+    'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+  };
 
 export default class Footer2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        fontsLoaded: false,
     };
   }
 
-  render() {
-    return (
-        <Footer style={{
-            backgroundColor: 'white',
-            shadowOffset: { width: 3, height: 3 },
-            shadowColor: '#000000',
-            shadowRadius: 5,
-            shadowOpacity: 0.3,
-            borderTopRightRadius: 25,
-            borderTopLeftRadius: 25,
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly'
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
 
-        }}>
-            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+  render() {
+    if (!this.state.fontsLoaded) {
+        return <AppLoading />;
+      }
+    return (
+        <HStack bg="indigo.600" alignItems="center" safeAreaBottom shadow={6}>
+        <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image source={require('../../assets/home.png')} height={22} width={22} />
                 <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Homepage</Text>
             </TouchableOpacity>
@@ -46,7 +51,7 @@ export default class Footer2 extends Component {
                 <Image source={require('../../assets/account.png')} height={22} width={22} />
                 <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Profile</Text>
             </TouchableOpacity>
-        </Footer>
+      </HStack>
     );
   }
 }
