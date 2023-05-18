@@ -5,6 +5,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import Swiper from 'react-native-swiper';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import LottieView from "lottie-react-native";
+import * as Font from 'expo-font';
 
 
 
@@ -42,6 +43,16 @@ const images = [{
 
 }];
 
+let customFonts = {
+	'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+	'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+	'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
+	'Avenir-Black': require('../../assets/fonts/Avenir-Black.ttf'),
+	'Avenir-Book': require('../../assets/fonts/Avenir-Book.ttf'),
+	'Avenir-Light': require('../../assets/fonts/Avenir-Light.ttf'),
+ 
+  };
+
 export default class Car extends Component {
 	constructor(props) {
 		super(props);
@@ -50,10 +61,17 @@ export default class Car extends Component {
 			progress: new Animated.Value(0),
 			fadeAnim: new Animated.Value(0),
 			isModalOpened: false,  //Controls if modal is opened or closed
-			currentImageIndex: 0   //Controls initial photo to show for modal
+			currentImageIndex: 0,   //Controls initial photo to show for modal
+			fontsLoaded: false,
 		};
 		this.animatedValue = new Animated.Value(0);
 	}
+
+	async _loadFontsAsync() {
+		await Font.loadAsync(customFonts);
+		this.setState({ fontsLoaded: true });
+	  }
+
 	_whishlistHandler(){
 		if(this.state.wishlist == false){
 			 Animated.timing(this.state.progress, {
@@ -75,7 +93,8 @@ export default class Car extends Component {
 		this.setState({ isModalOpened: true, currentImageIndex: index })
 	}
 	componentDidMount() {
-		this.animatedValue.setValue(0)
+		this.animatedValue.setValue(0);
+		this._loadFontsAsync();
 		// apply fade animation to small card
 		Animated.timing(
 		   this.state.fadeAnim,
@@ -101,6 +120,9 @@ export default class Car extends Component {
 			inputRange: [0, 1],
 			outputRange: [260, 0]
 		  })
+		  if (!this.state.fontsLoaded) {
+			return null;
+		  }
 		return (
 			<View>
 			<Container>
