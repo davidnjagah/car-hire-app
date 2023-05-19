@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
         shadowColor: '#000000',
         shadowRadius: 5,
         shadowOpacity: 0.2,
-        borderRadius: 15
+        borderRadius: 15,
+        marginBottom: 150,
     },
     featuresHolder:{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' },
     featuresWraper:{ display: 'flex', flexDirection: 'row', alignItems: 'center' },

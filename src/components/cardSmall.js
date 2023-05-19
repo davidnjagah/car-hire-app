@@ -36,11 +36,10 @@ export default class CardSmall extends Component {
         return (
             <View style={{
                 backgroundColor: 'white', borderColor: '#F0F1F3',
-                marginTop: 20,
+                marginTop: 10,
+                marginBottom: 50,
                 marginRight: 15,
                 marginLeft: 5,
-                paddingTop: 20,
-                paddingBottom: 20,
                 borderWidth: 1,
                 shadowOffset: { width: 3, height: 3 },
                 shadowColor: '#000000',
