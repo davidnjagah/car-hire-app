@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image, Animated, Easing, StyleSheet, Dimensions } from 'react-native';
-import { Body, Header, ListItem as Title, Left, Container, Content, Right } from "native-base";
-//import LinearGradient from "react-native-linear-gradient";
+import { Container, Icon, Box } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
 import Slider from "react-native-slider";
+import * as Font from 'expo-font';
 
 import ToggleButton from '../components/ToggleButton';
 import ToggleButtonColor from '../components/ToggleButtonColor';
 import SearchCard from '../components/searchCard';
-import Footer from '../components/footer';
+import Footer2 from '../components/footer';
+import Header from '../components/header';
 
 const { height, width } = Dimensions.get("window");
+
+let customFonts = {
+	'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+	'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+	'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
+	'Avenir-Black': require('../../assets/fonts/Avenir-Black.ttf'),
+	'Avenir-Book': require('../../assets/fonts/Avenir-Book.ttf'),
+	'Avenir-Light': require('../../assets/fonts/Avenir-Light.ttf'),
+  
+  };
 
 export default class search extends Component {
 	constructor(props) {
@@ -22,7 +33,8 @@ export default class search extends Component {
 			opendModal: '',
 			bounceValue: new Animated.Value(5000),
 			searchModal: new Animated.Value(-5000),
-			blackBackOpcity: new Animated.Value(-5000)
+			blackBackOpcity: new Animated.Value(-5000),
+			fontsLoaded: false,
 		};
 		this.animatedValue = new Animated.Value(0);
 	}
@@ -31,6 +43,12 @@ export default class search extends Component {
 		newState[type] = !newState[type];
 		this.setState(newState);
 	}
+
+	async _loadFontsAsync() {
+		await Font.loadAsync(customFonts);
+		this.setState({ fontsLoaded: true });
+	  }
+
 	_openModal() {
 		Animated.sequence([
 			Animated.timing(
@@ -143,7 +161,8 @@ export default class search extends Component {
 		// }
 	}
 	componentDidMount() {
-		this.animatedValue.setValue(0)
+		this.animatedValue.setValue(0);
+		this._loadFontsAsync();
 		// apply scroll to top animation to search card
 		Animated.timing(
 			this.animatedValue,
@@ -159,29 +178,13 @@ export default class search extends Component {
 			inputRange: [0, 1],
 			outputRange: [260, 0]
 		})
+		if (!this.state.fontsLoaded) {
+			return null;
+		  }
 		return (
 			<Container>
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-					<Header style={{ backgroundColor: "transparent" }} hasTabs>
-						<Left>
-							<TouchableOpacity style={{ marginRight: 10 }} onPress={() => {
-								this.props.navigation.goBack();
-							}}>
-								<Image source={require('../../assets/Back.png')} height={20} width={20} />
-							</TouchableOpacity>
-						</Left>
-						<Body style={{flex: 4 ,display:'flex',alignItems: 'flex-start' }}>
-							<Text style={{ fontFamily: 'Avenir-Heavy', color: '#ffffff', fontSize: 20, textAlign: 'left',writingDirection:'ltr',}}>Search Result</Text>
-						</Body>
-						<Right>
-							<TouchableOpacity style={{ marginRight: 10 }} onPress={() => { this._openModalSearch() }}>
-								<Image source={require('../../assets/search.png')} height={20} width={20} />
-							</TouchableOpacity>
-							<TouchableOpacity onPress={() => { this._openModal() }}>
-								<Image source={require('../../assets/Filter.png')} height={20} width={20} />
-							</TouchableOpacity>
-						</Right>
-					</Header>
+					<Header/>
 				</LinearGradient>
 				<Animated.View
 					style={[styles.searchView,
@@ -238,7 +241,7 @@ export default class search extends Component {
 				{ transform: [{ translateY: this.state.blackBackOpcity }] }]} onPress={() => {
 					this._handelClose()
 				}}></TouchableOpacity>
-				<Content>
+				<Box>
 					<ScrollView contentContainerStyle={{ display: 'flex', justifyContent: 'center' }}>
 						<Animated.View style={{ marginTop }}>
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
@@ -288,7 +291,7 @@ export default class search extends Component {
 						
 					</ScrollView>
 
-				</Content>
+				</Box>
 
 				<Animated.View
 					style={[styles.subView,
@@ -419,7 +422,7 @@ export default class search extends Component {
 
 					</View>
 				</Animated.View>
-				<Footer />
+				<Footer2 />
 			</Container>
 		);
 	}

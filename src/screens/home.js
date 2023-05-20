@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FlatList, SafeAreaView, TouchableWithoutFeedback, Animated, Pressable, Easing, Dimensions, Text, TouchableOpacity, View, Image, ScrollView, StyleSheet } from "react-native";
-import { Container, HStack, IconButton, Icon, Center, Box, StatusBar } from "native-base";
+import { Container, Box, StatusBar } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import { MaterialIcons } from "@expo/vector-icons";
 import * as Font from 'expo-font';
@@ -9,7 +9,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import CardBig from '../components/cardBig';
 import CardSmall from '../components/cardSmall';
 import Footer2 from '../components/footer';
-
+import Header from '../components/header';
 
 
 const { height, width } = Dimensions.get("window");
@@ -109,18 +109,7 @@ export default class Home extends React.Component {
          <SafeAreaView style={styles.header}>         
          <Container >
             <LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-                  <Box safeAreaTop bg="violet.600" />
-                  <HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
-                  <HStack alignItems="center">
-                     <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} />
-                     <Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Homepage</Text>
-                  </HStack>
-                  <HStack>
-                     <IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
-                     <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
-                     <IconButton icon={<Icon as={MaterialIcons} name="more-vert" size="sm" color="white" />} />
-                  </HStack>
-                  </HStack>
+                  <Header/>
                   <Box height="50" >
                   <ScrollView horizontal={true} style={{ display: 'flex' }} showsHorizontalScrollIndicator={false}>
                      <TouchableOpacity style={{ display: 'flex', flexDirection: 'row', padding: 10, marginLeft: 20, borderBottomColor: '#ffffff', borderBottomWidth: 5 }}>

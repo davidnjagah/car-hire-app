@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated, Easing, } from 'react-native';
+
+
 export default class cardBig extends Component {
     constructor(props) {
         super(props);

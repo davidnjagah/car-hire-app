@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Carousel from "react-native-snap-carousel";
 import MapView from "react-native-maps";
+import * as Font from 'expo-font';
 
 import LinearGradient from "react-native-linear-gradient";
 const Images = [
@@ -37,6 +38,16 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 3;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
+let customFonts = {
+	'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+	'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+	'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
+	'Avenir-Black': require('../../assets/fonts/Avenir-Black.ttf'),
+	'Avenir-Book': require('../../assets/fonts/Avenir-Book.ttf'),
+	'Avenir-Light': require('../../assets/fonts/Avenir-Light.ttf'),
+  
+  };
+
 export default class DemoScreen extends React.Component {
 
 	constructor(props) {
@@ -44,6 +55,7 @@ export default class DemoScreen extends React.Component {
 		this.state = {
 			scrolledX: 0,
 			activeSlide: 0,
+			fontsLoaded: false,
 			markers: [
 				{
 					coordinate: {
@@ -109,6 +121,11 @@ export default class DemoScreen extends React.Component {
 		};
 		this._renderItem = this._renderItem.bind(this);
 	}
+
+	async _loadFontsAsync() {
+		await Font.loadAsync(customFonts);
+		this.setState({ fontsLoaded: true });
+	  }
 	
 	componentWillMount() {
 		this.index = 0;
@@ -116,6 +133,7 @@ export default class DemoScreen extends React.Component {
 	}
 
 	componentDidMount() {
+		this._loadFontsAsync();
 		this.animation.addListener(({ value }) => {
 			let index = Math.floor(value / CARD_WIDTH + 0.4);
 			if (index >= this.state.markers.length) {
@@ -213,6 +231,9 @@ export default class DemoScreen extends React.Component {
 				opacity
 			};
 		});
+		if (!this.state.fontsLoaded) {
+			return null;
+		  }
 		return (
 			<View style={styles.container}>
 				

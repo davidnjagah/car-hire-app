@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing, } from 'react-native';
-import { Body, Header, ListItem as Title, Left, Container, Content, Right, Icon } from "native-base";
+import { Container, Icon, HStack, IconButton, Box, Center } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import Swiper from 'react-native-swiper';
 import ImageViewer from 'react-native-image-zoom-viewer';
@@ -8,8 +8,8 @@ import LottieView from "lottie-react-native";
 import * as Font from 'expo-font';
 
 
-
 import Footer2 from "../components/footer";
+import Header from '../components/header';
 const images = [{
 	// Simplest usage.
 	//     url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
@@ -127,25 +127,22 @@ export default class Car extends Component {
 			<View>
 			<Container>
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-					<Header style={{ backgroundColor: "transparent", display: 'flex' }}>
-						<Left style={{ flex: 1 }}>
-							<TouchableOpacity onPress={() => {
+				<HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
+					<HStack alignItems="center">
+					<TouchableOpacity onPress={() => {
 								this.props.navigation.goBack();
 							}}>
 								<Image source={require('../../assets/Back.png')} height={20} width={20} />
 							</TouchableOpacity>
-						</Left>
-						<Body style={{ flex: 4, display: 'flex', alignItems: 'flex-start' }}>
-							<Text style={{ fontFamily: 'Avenir-Heavy', color: '#ffffff', fontSize: 20, textAlign: 'left', writingDirection: 'ltr', }}>Car Details</Text>
-						</Body>
-						<Right>
-							<TouchableOpacity style={{ marginRight: 10 }} onPress={() => { this.props.navigation.navigate('Search') }}>
-								<Image source={require('../../assets/search.png')} height={20} width={20} />
-							</TouchableOpacity>
-						</Right>
-					</Header>
+						<Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Car Details</Text>
+					</HStack>
+					<HStack>
+						<IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
+						<IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} onPress={() => { this.props.navigation.navigate('Search') }}/>
+					</HStack>
+					</HStack>
 				</LinearGradient>
-				<Content>
+				<Box>
 					<Swiper style={styles.sliderWrapper} showsButtons={false}>
 						<View style={styles.slide} >
 							<TouchableWithoutFeedback onPress={() => { this.openModal(0) }}>
@@ -281,7 +278,7 @@ export default class Car extends Component {
 							}}
 						/>
 					</Modal>
-				</Content>
+				</Box>
 				<Footer2 />
 			</Container>
 			</View>
