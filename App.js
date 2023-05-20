@@ -1,6 +1,4 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useNavigation, createAppContainer } from '@react-navigation/native';
 import React, { Component } from 'react';
 import { NativeBaseProvider } from 'native-base';
 import {
@@ -13,6 +11,9 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createDrawerNavigator, createStackNavigator, NavigationActions } from '@react-navigation/stack';
+import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer} from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import SafeAreaView from 'react-native-safe-area-view';
 
@@ -34,6 +35,8 @@ import Car from "./src/screens/car";
 
 
 const Stack = createStackNavigator();
+
+const Drawer = createDrawerNavigator();
 
 
 const Navigator = () => (
@@ -161,8 +164,6 @@ render(){
  );
 }
 }
-
-//export default App;
 
 const styles = StyleSheet.create({
   container: {
