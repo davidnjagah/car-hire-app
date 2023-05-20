@@ -75,7 +75,6 @@ const RootStack = () => (
 
 //const AppContainer = createAppContainer(RootStack);
 
-//const App = () => {
 export default class App extends Component{
   constructor(properties) {
     super(properties);
