@@ -73,7 +73,6 @@ const RootStack = () => (
   </Drawer.Navigator>
 );
 
-//const AppContainer = createAppContainer(RootStack);
 
 export default class App extends Component{
   constructor(properties) {
