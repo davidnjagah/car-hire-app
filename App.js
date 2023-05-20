@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation, createAppContainer } from '@react-navigation/native';
 import React, { Component } from 'react';
 import { NativeBaseProvider } from 'native-base';
 import {
@@ -22,7 +22,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 *
 **********************************************************************/
 
-import DrawerContainer from './src/screens/drawer'
+import DrawerContainer from './src/screens/drawer';
 import SplashScreen from './src/screens/SplashScreen';
 import Logic from './src/screens/Logic';
 import Intro from './src/screens/intro';
@@ -36,127 +36,130 @@ import Car from "./src/screens/car";
 const Stack = createStackNavigator();
 
 
-// const Navigator = () => (
-// <NativeBaseProvider>
-//   <Stack.Navigator
-//     initialRouteName="Logic"
-//     screenOptions={{
-//       headerShown: false,
-//       // You can add custom transition configuration here
-//     }}
-//   >
-//     <Stack.Screen name="SplashScreen" component={SplashScreen} />
-//     <Stack.Screen name="Logic" component={Logic} />
-//     <Stack.Screen name="Intro" component={Intro} />
-//     <Stack.Screen name="Home" component={Home} />
-//     <Stack.Screen name="Login" component={Login} />
-//     <Stack.Screen name="Search" component={Search} />
-//     <Stack.Screen name="SearchNearBy" component={SearchNearBy} />
-//     <Stack.Screen name="Car" component={Car} />
-//   </Stack.Navigator>
-// </NativeBaseProvider>
-// );
-
-// const RootStack = () => (
-//   <Drawer.Navigator
-//     drawerPosition={I18nManager.isRTL ? 'right' : 'left'}
-//     drawerType="back"
-//     drawerContent={DrawerContainer}
-//     screenOptions={{
-//       drawerLockMode: 'locked-closed',
-//     }}
-//   >
-//     <Drawer.Screen name="Stack" component={Navigator} />
-//   </Drawer.Navigator>
-// );
-
-// const AppContainer = createAppContainer(RootStack);
-
-//const App = () => {
-export default class App extends Component{
-//   constructor(properties) {
-//     super(properties);
-//     this.state ={
-//        currentScreen:''
-//     }
-//     //disable Yellow Box
-//     console.disableYellowBox = true;
-//   } 
-
-//   async componentDidMount(){
-//    // this.navigator.dispatch({
-//    //    type: NavigationActions.NAVIGATE,
-//    //    routeName: 'SplashScreen',
-//    // });
-//    const navigation = this.props.navigation;
-
-//     const onNavigationStateChange = (prevState, currentState) => {
-//       const currentScreen = this.getActiveRouteName(currentState);
-//       const prevScreen = this.getActiveRouteName(prevState);
-//       // Do whatever you need with the currentScreen and prevScreen values
-//     };
-
-//     navigation.addListener('state', onNavigationStateChange);
-//    await AsyncStorage.getItem('Intro').then((Intro) => {
-//       if (!Intro) {
-//          this.navigator.dispatch({
-//             type: NavigationActions.NAVIGATE,
-//             routeName: 'Intro',
-//          });
-         
-//       }
-//    })
-//   }
-
-//   componentWillUnmount() {
-//     const navigation = this.props.navigation;
-//     navigation.removeListener('state', onNavigationStateChange);
-//   }
-
-  
-//   getActiveRouteName = (navigationState) => {
-//     if (!navigationState) {
-//       return null;
-//     }
-//     const route = navigationState.routes[navigationState.index];
-//     // dive into nested navigators
-//     if (route.routes) {
-//        return this.getActiveRouteName(route);
-//     }
-//     return route.routeName;
-//  }
-render(){
-    return (
-    // <NavigationContainer>
-    //   <RootStack />
-    // </NavigationContainer>
-    <NativeBaseProvider>
-  <NavigationContainer>
-    <Stack.Navigator
-    //initialRouteName="Logic"
+const Navigator = () => (
+<NativeBaseProvider>
+  <Stack.Navigator
+    initialRouteName="Logic"
     screenOptions={{
       headerShown: false,
       // You can add custom transition configuration here
     }}
   >
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
-     <Stack.Screen name="Logic" component={Logic} />
-     <Stack.Screen name="Intro" component={Intro} />
-     <Stack.Screen name="Login" component={Login} />
-     <Stack.Screen name="Home" component={Home} />
-     <Stack.Screen name="Search" component={Search} />
-     <Stack.Screen name="SearchNearBy" component={SearchNearBy} />
-     <Stack.Screen name="Car" component={Car} />
-    
+    <Stack.Screen name="Logic" component={Logic} />
+    <Stack.Screen name="Intro" component={Intro} />
+    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Search" component={Search} />
+    <Stack.Screen name="SearchNearBy" component={SearchNearBy} />
+    <Stack.Screen name="Car" component={Car} />
   </Stack.Navigator>
-  </NavigationContainer>
-  </NativeBaseProvider>
-    );
- }
+</NativeBaseProvider>
+);
+
+const RootStack = () => (
+  <Drawer.Navigator
+    drawerPosition={I18nManager.isRTL ? 'right' : 'left'}
+    drawerType="back"
+    drawerContent={DrawerContainer}
+    screenOptions={{
+      drawerLockMode: 'locked-closed',
+    }}
+  >
+    <Drawer.Screen name="Stack" component={Navigator} />
+  </Drawer.Navigator>
+);
+
+//const AppContainer = createAppContainer(RootStack);
+
+//const App = () => {
+export default class App extends Component{
+  constructor(properties) {
+    super(properties);
+    this.state ={
+       currentScreen:''
+    }
+    //disable Yellow Box
+    console.disableYellowBox = true;
+  } 
+
+  async componentDidMount(){
+   // this.navigator.dispatch({
+   //    type: NavigationActions.NAVIGATE,
+   //    routeName: 'SplashScreen',
+   // });
+   const navigation = this.props.navigation;
+
+    const onNavigationStateChange = (prevState, currentState) => {
+      const currentScreen = this.getActiveRouteName(currentState);
+      const prevScreen = this.getActiveRouteName(prevState);
+      // Do whatever you need with the currentScreen and prevScreen values
+    };
+
+    navigation.addListener('state', onNavigationStateChange);
+   await AsyncStorage.getItem('Intro').then((Intro) => {
+      if (!Intro) {
+         this.navigator.dispatch({
+            type: NavigationActions.NAVIGATE,
+            routeName: 'Intro',
+         });
+         
+      }
+   })
+  }
+
+  componentWillUnmount() {
+    const navigation = this.props.navigation;
+    navigation.removeListener('state', onNavigationStateChange);
+  }
+
   
-//   return (
-//     <AppContainer/>
-//  );
+  getActiveRouteName = (navigationState) => {
+    if (!navigationState) {
+      return null;
+    }
+    const route = navigationState.routes[navigationState.index];
+    // dive into nested navigators
+    if (route.routes) {
+       return this.getActiveRouteName(route);
+    }
+    return route.routeName;
+ }
+render(){
+    return (
+     <NavigationContainer>
+       <RootStack />
+     </NavigationContainer>
+//     <NativeBaseProvider>
+//   <NavigationContainer>
+//     <Stack.Navigator
+//     //initialRouteName="Logic"
+//     screenOptions={{
+//       headerShown: false,
+//       // You can add custom transition configuration here
+//     }}
+//   >
+//     <Stack.Screen name="SplashScreen" component={SplashScreen} />
+//      <Stack.Screen name="Logic" component={Logic} />
+//      <Stack.Screen name="Intro" component={Intro} />
+//      <Stack.Screen name="Login" component={Login} />
+//      <Stack.Screen name="Home" component={Home} />
+//      <Stack.Screen name="Search" component={Search} />
+//      <Stack.Screen name="SearchNearBy" component={SearchNearBy} />
+//      <Stack.Screen name="Car" component={Car} />
+    
+//   </Stack.Navigator>
+//   </NavigationContainer>
+//   </NativeBaseProvider>
+//     );
+//  }
+  
+  // return (
+  //   <NavigationContainer>
+  //   <AppContainer/>
+  //   </NavigationContainer>
+ );
+}
 }
 
 //export default App;
