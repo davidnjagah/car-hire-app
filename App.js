@@ -133,34 +133,6 @@ render(){
      <NavigationContainer>
        <RootStack />
      </NavigationContainer>
-//     <NativeBaseProvider>
-//   <NavigationContainer>
-//     <Stack.Navigator
-//     //initialRouteName="Logic"
-//     screenOptions={{
-//       headerShown: false,
-//       // You can add custom transition configuration here
-//     }}
-//   >
-//     <Stack.Screen name="SplashScreen" component={SplashScreen} />
-//      <Stack.Screen name="Logic" component={Logic} />
-//      <Stack.Screen name="Intro" component={Intro} />
-//      <Stack.Screen name="Login" component={Login} />
-//      <Stack.Screen name="Home" component={Home} />
-//      <Stack.Screen name="Search" component={Search} />
-//      <Stack.Screen name="SearchNearBy" component={SearchNearBy} />
-//      <Stack.Screen name="Car" component={Car} />
-    
-//   </Stack.Navigator>
-//   </NavigationContainer>
-//   </NativeBaseProvider>
-//     );
-//  }
-  
-  // return (
-  //   <NavigationContainer>
-  //   <AppContainer/>
-  //   </NavigationContainer>
  );
 }
 }
