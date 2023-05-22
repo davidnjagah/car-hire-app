@@ -10,7 +10,7 @@ import {
   StyleSheet
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createDrawerNavigator, createStackNavigator, NavigationActions } from '@react-navigation/stack';
+import { createStackNavigator, NavigationActions} from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer} from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -129,7 +129,7 @@ export default class App extends Component{
 render(){
     return (
      <NavigationContainer>
-       <RootStack />
+       <Navigator />
      </NavigationContainer>
  );
 }
