@@ -5,6 +5,8 @@ import {LinearGradient} from 'expo-linear-gradient';
 import * as Font from 'expo-font';
 import { MaterialIcons } from "@expo/vector-icons";
 
+import DrawerContainer from '../screens/drawer';
+
 let customFonts = {
   'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
   'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
@@ -41,7 +43,7 @@ export default class Header extends Component {
       <Box safeAreaTop bg="violet.600" />
         <HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
         <HStack alignItems="center">
-            <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} />
+            <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} onPress={() => { <DrawerContainer/> }}/>
             <Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Homepage</Text>
         </HStack>
         <HStack>

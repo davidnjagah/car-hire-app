@@ -62,7 +62,6 @@ const Navigator = () => (
 
 
 
-
 export default class App extends Component{
   constructor(properties) {
     super(properties);
