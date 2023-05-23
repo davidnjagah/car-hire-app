@@ -12,7 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createStackNavigator, NavigationActions} from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -89,7 +89,8 @@ export default class App extends Component{
    //    type: NavigationActions.NAVIGATE,
    //    routeName: 'SplashScreen',
    // });
-   const navigation = this.props.navigation;
+   const navigation = useNavigation();
+   console.log(navigation);
 
     const onNavigationStateChange = (prevState, currentState) => {
       const currentScreen = this.getActiveRouteName(currentState);
@@ -97,7 +98,9 @@ export default class App extends Component{
       // Do whatever you need with the currentScreen and prevScreen values
     };
 
-    navigation.addListener('state', onNavigationStateChange);
+    console.log(this.props.navigation);
+
+   navigation.addListener('state', onNavigationStateChange);
    await AsyncStorage.getItem('Intro').then((Intro) => {
       if (!Intro) {
          this.navigator.dispatch({
@@ -129,7 +132,16 @@ export default class App extends Component{
 render(){
     return (
      <NavigationContainer>
-       <Navigator />
+      <NativeBaseProvider>
+       <Drawer.Navigator initialRouteName="Logic">
+        <Drawer.Screen name="SplashScreen" component={SplashScreen} />
+        <Drawer.Screen name="Logic" component={Logic} />
+        <Drawer.Screen name="Intro" component={Intro} />
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Login" component={Login} />
+        <Drawer.Screen name="Search" component={Search} />
+      </Drawer.Navigator>
+      </NativeBaseProvider>
      </NavigationContainer>
  );
 }

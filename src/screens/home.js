@@ -14,6 +14,8 @@ import Header from '../components/header';
 
 const { height, width } = Dimensions.get("window");
 
+console.log(height +" "+ width);
+
 let customFonts = {
    'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
    'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
@@ -73,7 +75,6 @@ export default class Home extends React.Component {
    componentDidMount() {
       this.animatedValue.setValue(0);
       this._loadFontsAsync();
-      console.log(this.state.scrolled + " in componentdidmount")
       // apply fade animation to small card
       Animated.timing(
          this.state.fadeAnim,
@@ -203,7 +204,7 @@ export default class Home extends React.Component {
                         <Text style={{ fontSize: 20, fontFamily: 'Avenir-Heavy' }}>Category</Text>
                      </View>
                      <TouchableOpacity onPress={() => { this.props.navigation.navigate('SearchNearBy') }} style={{ display: 'flex', flexDirection: 'row', borderColor: '#D2D2D2', borderWidth: 2, borderRadius: 25, paddingRight: 10, paddingLeft: 10, paddingTop: 5, paddingBottom: 5 }}>
-                        <Image source={require('../../assets/map_pointer.png')} width={14} height={18} />
+                        <Image source={require('../../assets/map_pointer.png')} style={{height:18, width:18}} />
                         <Text style={{ fontSize: 12, fontFamily: 'Avenir-Roman', marginLeft: 10 }}>Search Near</Text>
                      </TouchableOpacity>
                   </View>
@@ -233,7 +234,7 @@ export default class Home extends React.Component {
                            shadowRadius: 5,
                            shadowOpacity: 0.1,
                         }}>
-                           <Image source={require('../../assets/X.png')} height={18} width={18} />
+                           <Image source={require('../../assets/X.png')} style={{height:18, width:18}} />
                         </TouchableOpacity>
                      </View>
                   </ScrollView>
