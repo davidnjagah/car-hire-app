@@ -8,7 +8,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 //import LinearGradient from 'react-native-linear-gradient';
 import {LinearGradient} from 'expo-linear-gradient';
 
-export default class intro extends Component {
+export default class Intro extends Component {
 
   constructor(props) {
     super(props);
@@ -87,7 +87,7 @@ export default class intro extends Component {
         <Fragment>
           <StatusBar barStyle="dark-content" />
           <AppIntroSlider
-            slides={slides}
+            data={slides}
             renderItem={this._renderItem}
             onDone={this.on_Done_all_slides}
             showSkipButton={true}

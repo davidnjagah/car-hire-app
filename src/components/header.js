@@ -3,6 +3,7 @@ import { View, Text, Dimensions, TouchableOpacity, Image, ScrollView, StyleSheet
 import { Container, HStack, IconButton, Icon, Box } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import * as Font from 'expo-font';
+import { MaterialIcons } from "@expo/vector-icons";
 
 let customFonts = {
   'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
@@ -45,7 +46,7 @@ export default class Header extends Component {
         </HStack>
         <HStack>
             <IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
-            <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
+            <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} onPress={() => { this.props.navigation.navigate('Search') }}/>
             <IconButton icon={<Icon as={MaterialIcons} name="more-vert" size="sm" color="white" />} />
         </HStack>
         </HStack>

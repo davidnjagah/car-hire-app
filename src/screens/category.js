@@ -16,7 +16,7 @@ let customFonts = {
  
  };
 
-export default class category extends Component {
+export default class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {

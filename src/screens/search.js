@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image, Animated, Easing, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, TextInput, Image, Animated, Easing, StyleSheet, Dimensions } from 'react-native';
 import { Container, Icon, Box } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
@@ -24,7 +24,7 @@ let customFonts = {
   
   };
 
-export default class search extends Component {
+export default class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -58,7 +58,8 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
-					duration: 300
+					duration: 300,
+					useNativeDriver: true,
 				}
 			).start(),
 			Animated.timing(
@@ -68,6 +69,7 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
+					useNativeDriver: true,
 				}
 			).start(),
 
@@ -84,7 +86,8 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
-					duration: 300
+					duration: 300,
+					useNativeDriver: true,
 				}
 			).start(),
 			Animated.timing(
@@ -94,7 +97,8 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
-					duration: 500
+					duration: 500,
+					useNativeDriver: true,
 				}
 			).start(),
 
@@ -110,7 +114,8 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
-					duration: 300
+					duration: 300,
+					useNativeDriver: true,
 				}
 			).start(),
 			Animated.timing(
@@ -121,6 +126,7 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
+					useNativeDriver: true,
 				}
 			).start(),
 		])
@@ -135,7 +141,8 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
-					duration: 300
+					duration: 300,
+					useNativeDriver: true,
 				}
 			).start(),
 			Animated.timing(
@@ -145,6 +152,7 @@ export default class search extends Component {
 					velocity: 3,
 					tension: 2,
 					friction: 8,
+					useNativeDriver: true,
 				}
 			).start(),
 		])
@@ -169,6 +177,7 @@ export default class search extends Component {
 			{
 				toValue: 1,
 				duration: 1000,
+				useNativeDriver: true,
 				easing: Easing.inOut(Easing.quad)
 			}
 		).start()
@@ -182,6 +191,7 @@ export default class search extends Component {
 			return null;
 		  }
 		return (
+			<SafeAreaView style={styles.header}>
 			<Container>
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
 					<Header/>
@@ -424,6 +434,7 @@ export default class search extends Component {
 				</Animated.View>
 				<Footer2 />
 			</Container>
+			</SafeAreaView>
 		);
 	}
 }
@@ -452,4 +463,7 @@ var styles = StyleSheet.create({
 		zIndex: 15,
 		shadowOffset: { width: 3, height: 3 }, shadowColor: '#000000', shadowRadius: 5, shadowOpacity: 0.3,
 	},
+	header: {
+		width: width+100,
+	 },
 });

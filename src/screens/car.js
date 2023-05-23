@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing, } from 'react-native';
+import { View, SafeAreaView, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing,  Dimensions } from 'react-native';
 import { Container, Icon, HStack, IconButton, Box, Center } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import Swiper from 'react-native-swiper';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import LottieView from "lottie-react-native";
 import * as Font from 'expo-font';
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 import Footer2 from "../components/footer";
 import Header from '../components/header';
+
+const { height, width } = Dimensions.get("window");
 const images = [{
 	// Simplest usage.
 	//     url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
@@ -101,6 +104,7 @@ export default class Car extends Component {
 		   {
 			  toValue: 1,
 			  duration: 1000,
+			  useNativeDriver: true,
 		   }
 		).start();
 		
@@ -110,6 +114,7 @@ export default class Car extends Component {
 		  {
 			toValue: 1,
 			duration: 2000,
+			useNativeDriver: true,
 			easing:Easing.inOut(Easing.quad)
 		  }
 	  ).start()
@@ -124,7 +129,7 @@ export default class Car extends Component {
 			return null;
 		  }
 		return (
-			<View>
+			<SafeAreaView style={styles.header}>
 			<Container>
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
 				<HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
@@ -281,7 +286,7 @@ export default class Car extends Component {
 				</Box>
 				<Footer2 />
 			</Container>
-			</View>
+			</SafeAreaView>
 		);
 	}
 }
@@ -292,5 +297,8 @@ const styles = StyleSheet.create({
     featuresHolder:{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around',flexWrap:'wrap',paddingHorizontal:20,paddingVertical:10 },
     featuresWraper:{ display: 'flex', flexDirection: 'row', alignItems: 'center',width:'33%' },
 	features:{height: 34, width: 34, backgroundColor: 'white',display: 'flex',flexDirection: 'column', alignItems: 'center',justifyContent: 'center',shadowOffset: { width: 3, height: 3 },shadowColor: '#000000',shadowRadius: 5,shadowOpacity: 0.2,borderRadius: 50 / 2, marginRight: 10,marginBottom:10},
-    featuresTitle:{ fontSize: 10, fontFamily: 'Avenir-Heavy' }
+    featuresTitle:{ fontSize: 10, fontFamily: 'Avenir-Heavy' },
+	header: {
+		width: width+100,
+	 }
 })

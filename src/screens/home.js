@@ -109,7 +109,7 @@ export default class Home extends React.Component {
          <SafeAreaView style={styles.header}>         
          <Container >
             <LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-                  <Header/>
+                  <Header navigation={this.props.navigation}/>
                   <Box height="50" >
                   <ScrollView horizontal={true} style={{ display: 'flex' }} showsHorizontalScrollIndicator={false}>
                      <TouchableOpacity style={{ display: 'flex', flexDirection: 'row', padding: 10, marginLeft: 20, borderBottomColor: '#ffffff', borderBottomWidth: 5 }}>
