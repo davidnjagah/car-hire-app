@@ -60,18 +60,7 @@ const Navigator = () => (
 </NativeBaseProvider>
 );
 
-const RootStack = () => (
-  <Drawer.Navigator
-    drawerPosition={I18nManager.isRTL ? 'right' : 'left'}
-    drawerType="back"
-    drawerContent={DrawerContainer}
-    screenOptions={{
-      drawerLockMode: 'locked-closed',
-    }}
-  >
-    <Drawer.Screen name="Stack" component={Navigator} />
-  </Drawer.Navigator>
-);
+
 
 
 export default class App extends Component{
@@ -132,16 +121,7 @@ export default class App extends Component{
 render(){
     return (
      <NavigationContainer>
-      <NativeBaseProvider>
-       <Drawer.Navigator initialRouteName="Logic">
-        <Drawer.Screen name="SplashScreen" component={SplashScreen} />
-        <Drawer.Screen name="Logic" component={Logic} />
-        <Drawer.Screen name="Intro" component={Intro} />
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Login" component={Login} />
-        <Drawer.Screen name="Search" component={Search} />
-      </Drawer.Navigator>
-      </NativeBaseProvider>
+      <Navigator/>
      </NavigationContainer>
  );
 }
