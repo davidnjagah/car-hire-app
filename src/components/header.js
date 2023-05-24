@@ -5,7 +5,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import * as Font from 'expo-font';
 import { MaterialIcons } from "@expo/vector-icons";
 
-import DrawerContainer from '../screens/drawer';
+
 
 let customFonts = {
   'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
