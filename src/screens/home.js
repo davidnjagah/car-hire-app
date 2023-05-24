@@ -107,7 +107,7 @@ export default class Home extends React.Component {
          return null;
        }
       return (
-         <SafeAreaView style={styles.header}>         
+         <SafeAreaView style={styles.container}>         
          <Container >
             <LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
                   <Header navigation={this.props.navigation}/>
@@ -132,10 +132,9 @@ export default class Home extends React.Component {
                   </ScrollView>
                   </Box>
                </LinearGradient> 
-               <Box height="60%">
                <ScrollView horizontal={false}>
                <Box height="50%">
-                  <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true} style={styles.scrollView} showsHorizontalScrollIndicator={false} >
+                  <ScrollView horizontal={true} style={styles.scrollView} showsHorizontalScrollIndicator={false} >
                     <Animated.View> 
                         <TouchableOpacity onPress={() => {this.props.navigation.navigate('Car') }} >
                            <CardBig />
@@ -240,18 +239,27 @@ export default class Home extends React.Component {
                   </ScrollView>
                </Animated.View>
             </ScrollView>
-            </Box>
-            <Box height="34%" width={width} >
-            <Footer2/>
-            </Box>
-            </Container>
-            </SafeAreaView>
-      )
+         <Box style={styles.footerContainer}>
+          <Footer2 />
+        </Box>
+         </Container>
+         </SafeAreaView>
+      );
    }
 }
 
 
 var styles = StyleSheet.create({
+   container: {
+      flex: 1,
+    },
+    footerContainer: {
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: '#ffffff',
+    },
    subView: {
       position: "absolute",
       bottom: 0,
@@ -265,9 +273,6 @@ var styles = StyleSheet.create({
    header: {
       width: width+100,
    },
-   contentContainer: {
-      
-    },
     scrollView: {
       flex:1,
       paddingTop: 5,

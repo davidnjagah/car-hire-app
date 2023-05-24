@@ -38,44 +38,64 @@ export default class Footer2 extends Component {
        return null;
       }
     return (
-        <Box flex={1} bg="white" safeAreaTop width="100%" maxW= {width} alignSelf="center">
-        <HStack style={{
-            backgroundColor: 'white',
-            shadowOffset: { width: 3, height: 3 },
-            shadowColor: '#000000',
-            shadowRadius: 5,
-            shadowOpacity: 0.3,
-            borderTopRightRadius: 25,
-            borderTopLeftRadius: 25,
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-
-        }} bg="indigo.600" alignItems="center" safeAreaBottom shadow={6}>
+      <Box
+      position="absolute"
+      bottom={0}
+      left={0}
+      right={0}
+      padding={4}
+      shadow={6}
+      backgroundColor= "white"
+      shadowOffset= {{ width: "3", height: 3 }}
+      shadowColor= '#000000'
+      shadowRadius= {5}
+      shadowOpacity= {0.3}
+      borderTopRightRadius= {25}
+      borderTopLeftRadius= {25}
+    >
+      <HStack
+        alignItems="center"
+        justifyContent="space-evenly"
+      >
         <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={require('../../assets/home.png')} height={22} width={22} />
-                <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Homepage</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={require('../../assets/clipboard.png')} height={22} width={22} />
-                <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Works</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-
-                marginTop: -20,
-            }}>
-                <Image source={require('../../assets/addIcon.png')} style={{ marginTop: -2, borderColor: '#F0F1F3', borderWidth: 6, borderRadius: 66 / 2, height: 66, width: 66 }} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={require('../../assets/date.png')} height={22} width={22} />
-                <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Calendar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={require('../../assets/account.png')} height={22} width={22} />
-                <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy' }}>Profile</Text>
-            </TouchableOpacity>
+          <Image source={require('../../assets/home.png')} height={22} width={22} />
+          <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+            Homepage
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={require('../../assets/clipboard.png')} height={22} width={22} />
+          <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+            Works
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Image
+            source={require('../../assets/addIcon.png')}
+            style={{
+              borderColor: '#F0F1F3',
+              borderWidth: 6,
+              borderRadius: 66 / 2,
+              height: 66,
+              width: 66,
+              marginTop: -20,
+            }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={require('../../assets/date.png')} height={22} width={22} />
+          <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+            Calendar
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={require('../../assets/account.png')} height={22} width={22} />
+          <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+            Profile
+          </Text>
+        </TouchableOpacity>
       </HStack>
-      </Box>
+    </Box>
     );
   }
 }

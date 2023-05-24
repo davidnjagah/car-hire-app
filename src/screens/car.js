@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, SafeAreaView, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing,  Dimensions } from 'react-native';
+import React, { Component, useRef } from 'react';
+import { View, SafeAreaView, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Modal, StyleSheet,Animated, Easing,  Dimensions } from 'react-native';
 import { Container, Icon, HStack, IconButton, Box, Center } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import Swiper from 'react-native-swiper';
@@ -7,10 +7,12 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 import LottieView from "lottie-react-native";
 import * as Font from 'expo-font';
 import { MaterialIcons } from "@expo/vector-icons";
-
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+//import { ScrollView } from 'react-native-gesture-handler';
 
 import Footer2 from "../components/footer";
 import Header from '../components/header';
+
 
 const { height, width } = Dimensions.get("window");
 const images = [{
@@ -55,6 +57,8 @@ let customFonts = {
 	'Avenir-Light': require('../../assets/fonts/Avenir-Light.ttf'),
  
   };
+
+  const translation = new Animated.Value(0);
 
 export default class Car extends Component {
 	constructor(props) {
@@ -124,29 +128,19 @@ export default class Car extends Component {
 		const marginTop = this.animatedValue.interpolate({
 			inputRange: [0, 1],
 			outputRange: [260, 0]
-		  })
+		  });
+
 		  if (!this.state.fontsLoaded) {
 			return null;
 		  }
 		return (
 			<SafeAreaView style={styles.header}>
-			<Container>
-				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
-				<HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
-					<HStack alignItems="center">
-					<TouchableOpacity onPress={() => {
-								this.props.navigation.goBack();
-							}}>
-								<Image source={require('../../assets/Back.png')} height={20} width={20} />
-							</TouchableOpacity>
-						<Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Car Details</Text>
-					</HStack>
-					<HStack>
-						<IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
-						<IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} onPress={() => { this.props.navigation.navigate('Search') }}/>
-					</HStack>
-					</HStack>
-				</LinearGradient>
+			<Container style={{flex:1}}>
+			<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]}/>
+			<Box width={width}>
+          <Header />
+        </Box>
+			<ScrollView>				
 				<Box>
 					<Swiper style={styles.sliderWrapper} showsButtons={false}>
 						<View style={styles.slide} >
@@ -192,55 +186,55 @@ export default class Car extends Component {
 						</View>
 					</View>
 					<View style={styles.featuresHolder}>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
 							<Text style={styles.featuresTitle}>3200 cc</Text>
 						</Animated.View>
-						<Animated.View style={[styles.featuresWraper,{marginTop}]}>
+						<Animated.View style={[styles.featuresWraper]}>
 							<View style={styles.features}>
 								<Image source={require('../../assets/engine.png')} height="25" width="27" />
 							</View>
@@ -284,6 +278,7 @@ export default class Car extends Component {
 						/>
 					</Modal>
 				</Box>
+				</ScrollView>
 				<Footer2 />
 			</Container>
 			</SafeAreaView>
@@ -291,14 +286,71 @@ export default class Car extends Component {
 	}
 }
 
+// const styles = StyleSheet.create({
+// 	sliderWrapper: { height: 250 },
+// 	header: {
+// 		width: width+100,
+// 		flex: 1,
+// 	 },
+// 	slide: {flex: 1,justifyContent: 'center',alignItems: 'center',backgroundColor: '#9DD6EB'},
+//     featuresHolder:{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around',flexWrap:'wrap',paddingHorizontal:20, paddingVertical:10},
+//     featuresWraper:{ display: 'flex', flexDirection: 'row', alignItems: 'center',width:'33%',
+// 	transform: [
+// 		{ translateX: translation },
+// 	  ],
+// },
+// 	features:{height: 34, width: 34, backgroundColor: 'white',display: 'flex',flexDirection: 'column', alignItems: 'center',justifyContent: 'center',shadowOffset: { width: 3, height: 3 },shadowColor: '#000000',shadowRadius: 5,shadowOpacity: 0.2,borderRadius: 50 / 2, marginRight: 10,marginBottom:10},
+//     featuresTitle:{ fontSize: 10, fontFamily: 'Avenir-Heavy' },
+	
+// })
+
 const styles = StyleSheet.create({
-	sliderWrapper: { height: 250 },
-	slide: {flex: 1,justifyContent: 'center',alignItems: 'center',backgroundColor: '#9DD6EB'},
-    featuresHolder:{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around',flexWrap:'wrap',paddingHorizontal:20,paddingVertical:10 },
-    featuresWraper:{ display: 'flex', flexDirection: 'row', alignItems: 'center',width:'33%' },
-	features:{height: 34, width: 34, backgroundColor: 'white',display: 'flex',flexDirection: 'column', alignItems: 'center',justifyContent: 'center',shadowOffset: { width: 3, height: 3 },shadowColor: '#000000',shadowRadius: 5,shadowOpacity: 0.2,borderRadius: 50 / 2, marginRight: 10,marginBottom:10},
-    featuresTitle:{ fontSize: 10, fontFamily: 'Avenir-Heavy' },
+	sliderWrapper: { height: width * 0.6 },
 	header: {
-		width: width+100,
-	 }
-})
+	  flex: 1,
+	  width: width+100
+	},
+	slide: {
+	  flex: 1,
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	  backgroundColor: '#9DD6EB',
+	  width: width,
+	},
+	featuresHolder: {
+	  display: 'flex',
+	  flexDirection: 'row',
+	  justifyContent: 'space-around',
+	  flexWrap: 'wrap',
+	  paddingHorizontal: 20,
+	  paddingVertical: 10,
+	  width: width,
+	},
+	featuresWraper: {
+	  display: 'flex',
+	  flexDirection: 'row',
+	  alignItems: 'center',
+	  width: '33%',
+	  transform: [
+		{ translateX: translation },
+	  ],
+	},
+	features: {
+	  height: 34,
+	  width: 34,
+	  backgroundColor: 'white',
+	  display: 'flex',
+	  flexDirection: 'column',
+	  alignItems: 'center',
+	  justifyContent: 'center',
+	  shadowOffset: { width: 3, height: 3 },
+	  shadowColor: '#000000',
+	  shadowRadius: 5,
+	  shadowOpacity: 0.2,
+	  borderRadius: 50 / 2,
+	  marginRight: 10,
+	  marginBottom: 10,
+	},
+	featuresTitle: { fontSize: 10, fontFamily: 'Avenir-Heavy' },
+  });
+  

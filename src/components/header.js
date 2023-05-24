@@ -43,7 +43,7 @@ export default class Header extends Component {
       <Box safeAreaTop bg="violet.600" />
         <HStack  bg="violet.800" px="1" py="3" justifyContent="space-between" alignItems="center">
         <HStack alignItems="center">
-            <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} onPress={() => { <DrawerContainer/> }}/>
+            <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} onPress={() => { }}/>
             <Text style={{ fontFamily: 'Avenir-Heavy', color: 'white', fontSize: 20, marginLeft: 10 }}>Homepage</Text>
         </HStack>
         <HStack>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import { NativeBaseProvider } from 'native-base';
 
 
 const Drawer = createDrawerNavigator();
@@ -16,6 +17,7 @@ export default class DrawerContainer extends Component {
 
   render() {
     return (
+      <NativeBaseProvider>
       <Drawer.Navigator initialRouteName="Logic" 
       drawerPosition={I18nManager.isRTL ? 'right' : 'left'}
       drawerType="back"
@@ -29,6 +31,7 @@ export default class DrawerContainer extends Component {
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="Search" component={Search} />
       </Drawer.Navigator>
-    );
+      </NativeBaseProvider>
+    )
   }
 }
