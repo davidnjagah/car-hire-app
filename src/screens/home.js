@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FlatList, SafeAreaView, TouchableWithoutFeedback, Animated, Pressable, Easing, Dimensions, Text, TouchableOpacity, View, Image, ScrollView, StyleSheet } from "react-native";
-import { Container, Box, StatusBar } from "native-base";
+import { Container, Box, StatusBar, HStack } from "native-base";
 import {LinearGradient} from 'expo-linear-gradient';
 import { MaterialIcons } from "@expo/vector-icons";
 import * as Font from 'expo-font';
@@ -134,7 +134,7 @@ export default class Home extends React.Component {
                </LinearGradient> 
                <ScrollView horizontal={false}>
                <Box height="50%">
-                  <ScrollView horizontal={true} style={styles.scrollView} showsHorizontalScrollIndicator={false} >
+                  <ScrollView horizontal={true} contentContainerStyle={styles.scrollView} showsHorizontalScrollIndicator={false} >
                     <Animated.View> 
                         <TouchableOpacity onPress={() => {this.props.navigation.navigate('Car') }} >
                            <CardBig />
@@ -239,26 +239,89 @@ export default class Home extends React.Component {
                   </ScrollView>
                </Animated.View>
             </ScrollView>
-         <Box style={styles.footerContainer}>
-          <Footer2 />
-        </Box>
+            <View 
+            flex= {0}
+            display= 'flex'
+            bg="black"
+            alignItems="center"
+            >
+            <Box
+               flex={.535} 
+               
+            >
+            <HStack
+            alignItems="center"
+            justifyContent="space-evenly"
+            //bg="black"
+            bg="indigo.600" 
+            safeAreaBottom
+            paddingTop={2}
+            width="100%"
+            shadowOffset= {{ width: "3", height: 3 }}
+            shadowColor= '#000000'
+            shadowRadius= {5}
+            shadowOpacity= {0.3}
+            borderTopRightRadius= {25}
+            borderTopLeftRadius= {25}
+            >
+            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+               <Image source={require('../../assets/home.png')} height={22} width={22} />
+               <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+                  Homepage
+               </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+               <Image source={require('../../assets/clipboard.png')} height={22} width={22} />
+               <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+                  Works
+               </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+               <Image
+                  source={require('../../assets/addIcon.png')}
+                  style={{
+                  borderColor: '#F0F1F3',
+                  borderWidth: 6,
+                  borderRadius: 66 / 2,
+                  height: 66,
+                  width: 66,
+                  marginTop: -20,
+                  }}
+               />
+            </TouchableOpacity>
+            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+               <Image source={require('../../assets/date.png')} height={22} width={22} />
+               <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+                  Calendar
+               </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+               <Image source={require('../../assets/account.png')} height={22} width={22} />
+               <Text style={{ fontSize: 10, fontFamily: 'Avenir-Heavy', color: 'white' }}>
+                  Profile
+               </Text>
+            </TouchableOpacity>
+            </HStack>
+         </Box>
+        </View>
          </Container>
          </SafeAreaView>
       );
    }
 }
 
+//
+//<Box>
 
 var styles = StyleSheet.create({
    container: {
-      flex: 1,
+      flex: 0,
+      width: width+100
     },
     footerContainer: {
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
+      width: "auto",
+      height: "auto",
     },
    subView: {
       position: "absolute",
@@ -271,10 +334,10 @@ var styles = StyleSheet.create({
       zIndex: 1,
    },
    header: {
-      width: width+100,
+      //width: width+100,
    },
     scrollView: {
-      flex:1,
+      flexGrow: 0,
       paddingTop: 5,
     },
 });

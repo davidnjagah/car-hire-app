@@ -48,7 +48,6 @@ const Navigator = () => (
       // You can add custom transition configuration here
     }}
   >
-    <Stack.Screen name="DrawerContainer" component={SplashScreen} />
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
     <Stack.Screen name="Logic" component={Logic} />
     <Stack.Screen name="Intro" component={Intro} />
@@ -89,7 +88,7 @@ export default class App extends Component{
 
     console.log(this.props.navigation);
 
-   //navigation.addListener('state', onNavigationStateChange);
+   navigation.addListener('state', onNavigationStateChange);
    await AsyncStorage.getItem('Intro').then((Intro) => {
       if (!Intro) {
          this.navigator.dispatch({
@@ -103,7 +102,7 @@ export default class App extends Component{
 
   componentWillUnmount() {
     const navigation = this.props.navigation;
-    //navigation.removeListener('state', onNavigationStateChange);
+    navigation.removeListener('state', onNavigationStateChange);
   }
 
   

@@ -253,49 +253,49 @@ export default class Search extends Component {
 				}}></TouchableOpacity>
 				<Box>
 					<ScrollView contentContainerStyle={{ display: 'flex', justifyContent: 'center' }}>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-							<SearchCard style={{ marginTop }} image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
+							<SearchCard  image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-							<SearchCard style={{ marginTop }} image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
+							<SearchCard  image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-							<SearchCard style={{ marginTop }} image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
+							<SearchCard  image={require('../../assets/SearchCamaro.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
-						<Animated.View style={{ marginTop }}>
+						<Animated.View >
 							<TouchableOpacity onPress={() => { this.props.navigation.navigate('Car') }}>
-								<SearchCard style={{ marginTop }} image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
+								<SearchCard  image={require('../../assets/SearchAudi2.png')} title="Sports Car" />
 							</TouchableOpacity>
 						</Animated.View>
 						
@@ -465,5 +465,6 @@ var styles = StyleSheet.create({
 	},
 	header: {
 		width: width+100,
+		flex: 1,
 	 },
 });

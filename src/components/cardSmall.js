@@ -37,7 +37,7 @@ export default class CardSmall extends Component {
             <View style={{
                 backgroundColor: 'white', borderColor: '#F0F1F3',
                 marginTop: 10,
-                marginBottom: 50,
+                marginBottom: 40,
                 marginRight: 15,
                 marginLeft: 5,
                 borderWidth: 1,
@@ -46,7 +46,7 @@ export default class CardSmall extends Component {
                 shadowRadius: 5,
                 shadowOpacity: 0.1,
                 borderRadius: 15,
-                height:146,width:150
+                height:146,width:130
             }}>
                 <View style={{ display: 'flex', marginTop: 10, marginBottom: 10 }}>
                     <Image source={this.props.image} style={{height:56, width:117}} />

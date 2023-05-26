@@ -138,7 +138,7 @@ export default class Car extends Component {
 			<Container style={{flex:1}}>
 			<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]}/>
 			<Box width={width}>
-          <Header />
+          <Header navigation={this.props.navigation}/>
         </Box>
 			<ScrollView>				
 				<Box>
