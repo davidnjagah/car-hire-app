@@ -192,10 +192,11 @@ export default class Search extends Component {
 		  }
 		return (
 			<SafeAreaView style={styles.header}>
-			<Container>
+			<Container >
 				<LinearGradient colors={['#3C80F7', '#1058D1']} start={[0.0, 0.5]} end={[1.0, 0.5]} locations={[0.0, 1.0]} >
 					<Header/>
 				</LinearGradient>
+				<ScrollView>
 				<Animated.View
 					style={[styles.searchView,
 					{ transform: [{ translateY: this.state.searchModal }] }]}
@@ -433,6 +434,7 @@ export default class Search extends Component {
 					</View>
 				</Animated.View>
 				<Footer2 />
+				</ScrollView>
 			</Container>
 			</SafeAreaView>
 		);
@@ -465,6 +467,6 @@ var styles = StyleSheet.create({
 	},
 	header: {
 		width: width+100,
-		flex: 1,
+		flex: 0,
 	 },
 });
